@@ -33,7 +33,7 @@ def cal_time(func):
 
 # low B 三人组
 
-# 冒泡排序
+# 冒泡排序 - 大的数到最后
 @cal_time
 def bubble_sort(data_set):
     for i in range(len(data_set) - 1):
@@ -61,7 +61,7 @@ def bubble_sort_v1(data_set):
 bubble_sort_v1(li1)
 
 
-# 选择排序
+# 选择排序 - 每次把无序区里最小的数放到最前面
 @cal_time
 def select_sort(data_set):
     for i in range(len(data_set) - 1):
@@ -76,7 +76,7 @@ def select_sort(data_set):
 select_sort(li2)
 
 
-# 插入排序
+# 插入排序 - 每次把无序区中第一个数插入到有序区中
 
 @cal_time
 def insert_sort(data_set):
@@ -94,12 +94,10 @@ insert_sort(li3)
 
 #  NB 三人组
 
-# 快速排序
+# 快速排序 - 每次将列表第一个数放到中间，使得左面的都比他小，右面的都比他大，再对左右两个列表做次操作，递归下去...
 @cal_time
 def quick_sort(data_set):
-    left = 0
-    right = len(data_set) - 1
-    return _quick_sort(data_set, left, right)
+    return _quick_sort(data_set, 0, len(data_set) - 1)
 
 
 def _quick_sort(data_set, left, right):
