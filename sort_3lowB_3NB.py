@@ -10,12 +10,14 @@ li3 = list(range(1000))
 li4 = list(range(1000))
 li5 = list(range(1000))
 li6 = list(range(1000))
+li8 = list(range(1000))
 random.shuffle(li1)
 random.shuffle(li2)
 random.shuffle(li3)
 random.shuffle(li4)
 random.shuffle(li5)
 random.shuffle(li6)
+random.shuffle(li8)
 
 
 # 装饰器
@@ -197,7 +199,7 @@ mergesort(li6)
 
 
 # 计数排序
-
+@cal_time
 def count_sort(li, max_num):
     count = [0 for i in range(max_num + 1)]
     print(count)
@@ -212,3 +214,21 @@ def count_sort(li, max_num):
 
 li7 = [1, 2, 3, 4, 4, 5, 5, 6, 2, 3, 2, 3, 4, 2, 3, 2, 2, 3, 4, 3, 2, 4, 2, 4, 6, 2, 4]
 count_sort(li7, 6)
+
+
+# 希尔排序 - 每次进行len(list)//2分组进行插入排序
+@cal_time
+def shell_sort(data_set):
+    gap = len(data_set)//2
+    while gap > 0:
+        for i in range(gap, len(data_set)):
+            tmp = data_set[i]
+            j = i - gap
+            while j >= 0 and tmp < data_set[j]:
+                data_set[j + gap] = data_set[j]
+                j = j - gap
+            data_set[j + gap] = tmp
+        gap //= 2
+
+shell_sort(li8)
+
